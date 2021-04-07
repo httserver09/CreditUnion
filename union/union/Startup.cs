@@ -45,8 +45,8 @@ namespace union
             );
 
 
-            services.AddScoped<IMain, SqlMainRepository>();
-            services.AddScoped<IClient, SqlClient_Repository>();
+            services.AddScoped<IAccount, SqlAccountRepository>();
+            services.AddScoped<IClient, SqlClientRepository>();
 
 
             services.AddControllersWithViews();

@@ -6,7 +6,7 @@ using union.Models;
 
 namespace union.Interfaces
 {
-    public interface IMain
+    public interface IAccount
     {
         IEnumerable<Account> GetAccounts();
         Account GetAccount(int id);

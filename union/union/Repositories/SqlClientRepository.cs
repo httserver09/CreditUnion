@@ -7,12 +7,12 @@ using union.Models;
 
 namespace union.Repositories
 {
-    public class SqlClient_Repository : IClient
+    public class SqlClientRepository : IClient
     {
         private readonly AppDbContext _context;
 
 
-        public SqlClient_Repository(AppDbContext context)
+        public SqlClientRepository(AppDbContext context)
         {
             _context = context;
         }

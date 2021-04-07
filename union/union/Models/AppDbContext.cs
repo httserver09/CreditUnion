@@ -17,6 +17,7 @@ namespace union.Models
         public DbSet<Account> accounts { get; set; }
 
         public DbSet<Client> clients { get; set; }
+        public DbSet<Models.Transaction> transactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -68,6 +69,18 @@ namespace union.Models
                 }
                 );
 
+            modelBuilder.Entity<Models.Transaction>().HasData(
+                new Models.Transaction
+                {
+                    id = 1,
+                    accountId = 1,
+                    accountCredited = "1234567",
+                    amount = 7600.89,
+                    description = "Annual House Maintenance",
+                    bankName = "Chase bank",
+                    transactionDate = new DateTime(2021, 01, 12),
+                    transactionStatus = "Successfully"
+                });
         }
 
     }

@@ -14,7 +14,7 @@ namespace union.Models
         public string accountCredited { get; set; }
         public string bankName { get; set; }
         public string description { get; set; }
-        public string transactionDate { get; set; }
+        public DateTime transactionDate { get; set; }
         public string transactionStatus { get; set; }
         public int accountId { get; set; }
     }
