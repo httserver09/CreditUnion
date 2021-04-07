@@ -7,55 +7,57 @@ using union.Models;
 
 namespace union.Repositories
 {
-    public class SqlClient_Repository : IClient
+    public class SqlAccountRepository : IAccount
     {
         private readonly AppDbContext _context;
 
-
-        public SqlClient_Repository(AppDbContext context)
+        public SqlAccountRepository(AppDbContext context)
         {
             _context = context;
         }
 
-        public string AddClient(Client client)
+        public string AddAccount(Account account)
         {
-            _context.Add(client);
+            _context.Add(account);
             _context.SaveChanges();
-            return "Client added successfully";
+            return "Account added successfully";
         }
 
-        public Client GetClient(int id)
+        public Account GetAccount(int id)
         {
             //_logger.LogInformation("Attempting to retrieve business with ID: " + Id);
-            return _context.clients.Find(id);
+
+            return _context.accounts.Find(id);
         }
 
-        public IEnumerable<Client> GetClients()
+        public IEnumerable<Account> GetAccounts()
         {
             //_logger.LogInformation("Attempting to retrieve list of businesses");
-            return _context.clients;
+
+            return _context.accounts;
         }
 
-        public string RemoveClient(int id)
+        public string RemoveAccount(int id)
         {
             //_logger.LogInformation("Deleting team detail of ID: " + softwareId);
 
-            Client client = _context.clients.Find(id);
+            Account account = _context.accounts.Find(id);
 
-            if (client != null)
+            if (account != null)
             {
-                _context.Remove(client);
+                _context.Remove(account);
                 _context.SaveChanges();
             }
 
-            return "Client deleted Successfully !";
+            return "Account deleted Successfully !";
+
         }
 
-        public string UpdateClient(Client clientChanges)
+        public string UpdateAccount(Account accountChanges)
         {
             //_logger.LogInformation("Attempting to update business changes");
 
-            var tm = _context.clients.Attach(clientChanges);
+            var tm = _context.accounts.Attach(accountChanges);
             tm.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
 
