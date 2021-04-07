@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "32aEBVP246wAGNdTZBecC4YHVMG/Yc/ZR3mLGF0YGy/A2Q8UpSoOcCYE5qzy/a7qwVXi7Sb5fofoeyqJAJivzA==",
+  "success": true,
+  "projectFilePath": "C:\\Development\\CUnion\\union\\union\\union.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AB006F2\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
