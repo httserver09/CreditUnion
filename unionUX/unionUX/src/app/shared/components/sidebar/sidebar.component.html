@@ -1,0 +1,69 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>John Doe</h2>
+            <h4>Johndoe@email.com</h4>
+        </div>
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="FADIL">
+    </div>
+
+    <mat-divider></mat-divider>
+    
+    <h2 matsubheader> Messaging </h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/msgs">
+        <mat-icon> mail_outline</mat-icon>
+        <span matBadge="0" matBadgeSize="small">Messages</span> 
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/tickets">
+        <mat-icon> chat_bubble_outline</mat-icon>
+        <span matBadge="0" matBadgeSize="small">Tickets</span>  
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <h2 matsubheader> Transactions </h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/transfer">
+        
+        <mat-icon> attach_money</mat-icon>
+        Make Transfer 
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/history">
+        <!-- <mat-icon>list</mat-icon> -->
+        <mat-icon>payment</mat-icon>
+        Transfer History 
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/summary">
+        <mat-icon>list</mat-icon>
+        Transaction Summary
+    </a>
+
+   
+
+    <mat-divider></mat-divider>
+
+    <h2 matsubheader> Pages </h2>
+    
+    
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Posts</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a>
+
+    <mat-divider></mat-divider>
+    
+    <h2 MatSubHeader>Tools</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>import_contacts</mat-icon>
+        Contacts
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>contact_phone</mat-icon>
+        Leads
+    </a>
+</mat-nav-list>
