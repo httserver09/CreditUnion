@@ -12,7 +12,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { MatBadgeModule } from '@angular/material/badge'
-// import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 @NgModule({
   declarations: [
@@ -31,6 +30,7 @@ import { MatBadgeModule } from '@angular/material/badge'
     MatListModule,
     RouterModule,
     MatBadgeModule
+
   ],
   exports: [
     HeaderComponent,

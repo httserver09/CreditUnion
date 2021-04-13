@@ -1,1 +1,108 @@
-<p>transfer works!</p>
+
+  <!-- <mat-horizontal-stepper linear #stepper> -->
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
+        <ng-template matStepLabel>Add Banking Details</ng-template>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Fullname" formControlName="first" required>
+        </mat-form-field>
+
+        <br>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Bank</mat-label>
+            <mat-select formControlName="second">
+              <mat-option *ngFor="let food of banks" [value]="food.value" >
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field  appearance="outline">
+            <mat-label>Account Number</mat-label>
+            <input matInput placeholder="Beneficiary Account" formControlName="third" required>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field  appearance="outline">
+            <mat-label>Your Reference</mat-label>
+            <input matInput placeholder="Your Reference" formControlName="fourth" required>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Beneficiary Reference</mat-label>
+            <input matInput placeholder="Beneficiary Reference" formControlName="fifth" required>
+        </mat-form-field>
+        
+        <div>
+          <button type="submit" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" label="Confirm Banking Details">
+      <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
+        <ng-template matStepLabel>Confirm Banking Details</ng-template>
+        
+        <mat-form-field  appearance="outline">
+          <mat-label >Name</mat-label>
+          <input matInput  placeholder="Fullname" formControlName="first" disabled>
+        </mat-form-field>
+
+        <br>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Bank</mat-label>
+            <mat-select disabled formControlName="second">
+              <mat-option *ngFor="let food of banks" [value]="food.value" >
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field  appearance="outline">
+            <mat-label>Account Number</mat-label>
+            <input matInput disabled placeholder="Beneficiary Account" formControlName="third" required>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field  appearance="outline">
+            <mat-label>Your Reference</mat-label>
+            <input matInput placeholder="Your Reference" formControlName="fourth" required>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Beneficiary Reference</mat-label>
+            <input matInput placeholder="Beneficiary Reference" formControlName="fifth" required>
+        </mat-form-field>
+        
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+          <button type="submit" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Make Payment</ng-template>
+      <p>Complete Payment</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  
