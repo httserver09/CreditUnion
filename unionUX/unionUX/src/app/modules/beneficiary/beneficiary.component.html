@@ -1,0 +1,49 @@
+<mat-table [dataSource]="beneficiariesOfProvidedAccount" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="Id">
+    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="fullname">
+    <mat-header-cell *matHeaderCellDef> Fullname </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fullname}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="bankName">
+    <mat-header-cell *matHeaderCellDef> Bank Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.bankName}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="accountNumber">
+    <mat-header-cell *matHeaderCellDef> Account Number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.accountNumber}} </mat-cell>
+  </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="yourRef">
+    <mat-header-cell *matHeaderCellDef> My Reference </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.yourRef}} </mat-cell>
+  </ng-container>
+
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="beneficiaryReference">
+    <mat-header-cell *matHeaderCellDef> Beneficiary Reference </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.beneficiaryReference}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="accountId">
+    <mat-header-cell *matHeaderCellDef> Account Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.accountId}} </mat-cell>
+  </ng-container>
+
+  
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

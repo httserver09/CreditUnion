@@ -30,12 +30,12 @@ import { MatBadgeModule } from '@angular/material/badge'
     MatListModule,
     RouterModule,
     MatBadgeModule
-
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent
-  ]
+  ],
+  providers: []
 })
 export class SharedModule { }

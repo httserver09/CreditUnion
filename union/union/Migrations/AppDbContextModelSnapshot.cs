@@ -257,6 +257,48 @@ namespace union.Migrations
                         });
                 });
 
+            modelBuilder.Entity("union.Models.Beneficiary", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("accountId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("accountNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bankName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("beneficiaryReference")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fullname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("yourRef")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("beneficiaries");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            accountId = 1,
+                            accountNumber = "1234567",
+                            bankName = "Chase",
+                            beneficiaryReference = "Testing",
+                            fullname = "John Doe",
+                            yourRef = "TestREF"
+                        });
+                });
+
             modelBuilder.Entity("union.Models.Client", b =>
                 {
                     b.Property<int>("id")
@@ -326,17 +368,11 @@ namespace union.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("accountCredited")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("accountId")
                         .HasColumnType("int");
 
                     b.Property<double>("amount")
                         .HasColumnType("float");
-
-                    b.Property<string>("bankName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
@@ -355,10 +391,8 @@ namespace union.Migrations
                         new
                         {
                             id = 1,
-                            accountCredited = "1234567",
                             accountId = 1,
                             amount = 7600.8900000000003,
-                            bankName = "Chase bank",
                             description = "Annual House Maintenance",
                             transactionDate = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             transactionStatus = "Successfully"

@@ -11,7 +11,6 @@ namespace union.Repositories
     {
         private readonly AppDbContext _context;
 
-
         public SqlClientRepository(AppDbContext context)
         {
             _context = context;

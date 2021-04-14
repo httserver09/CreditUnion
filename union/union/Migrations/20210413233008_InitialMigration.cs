@@ -63,6 +63,24 @@ namespace union.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "beneficiaries",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    fullname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    bankName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    accountNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    yourRef = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    beneficiaryReference = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    accountId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_beneficiaries", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "clients",
                 columns: table => new
                 {
@@ -80,6 +98,23 @@ namespace union.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_clients", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "transactions",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    amount = table.Column<double>(type: "float", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    transactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    transactionStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    accountId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_transactions", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -198,6 +233,11 @@ namespace union.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "beneficiaries",
+                columns: new[] { "id", "accountId", "accountNumber", "bankName", "beneficiaryReference", "fullname", "yourRef" },
+                values: new object[] { 1, 1, "1234567", "Chase", "Testing", "John Doe", "TestREF" });
+
+            migrationBuilder.InsertData(
                 table: "clients",
                 columns: new[] { "id", "address", "dateOfBirth", "email", "firstname", "gender", "lastname", "maritalStatus", "phone" },
                 values: new object[,]
@@ -205,6 +245,11 @@ namespace union.Migrations
                     { 1, "123 Yemen str Florida", new DateTime(1990, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "j@j.com", "John", "Male", "Doe", "Single", "1234567889" },
                     { 2, "123 NY road New York", new DateTime(1987, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "k@k.com", "Kris", "Male", "Olaku", "Single", "1234567889" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "transactions",
+                columns: new[] { "id", "accountId", "amount", "description", "transactionDate", "transactionStatus" },
+                values: new object[] { 1, 1, 7600.8900000000003, "Annual House Maintenance", new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Successfully" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -267,7 +312,13 @@ namespace union.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "beneficiaries");
+
+            migrationBuilder.DropTable(
                 name: "clients");
+
+            migrationBuilder.DropTable(
+                name: "transactions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
