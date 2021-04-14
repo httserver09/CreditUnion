@@ -1,7 +1,7 @@
 
   <!-- <mat-horizontal-stepper linear #stepper> -->
 <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+    <mat-step [stepControl]="firstFormGroup" label="Add Banking Details">
       <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
         <ng-template matStepLabel>Add Banking Details</ng-template>
         
@@ -44,9 +44,18 @@
 
         <br>
 
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Account Id</mat-label>
-            <input matInput type="number" value="1" placeholder="1" formControlName="accId" required>
+            <input matInput type="number" value="" placeholder="1" formControlName="accId" required>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Account</mat-label>
+          <mat-select formControlName="accountId">
+            <mat-option *ngFor="let acc of accounts" [value]="acc.value" >
+              {{ acc.valuecount }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
         
         <div>
@@ -98,11 +107,20 @@
 
         <br>
 
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Account Id</mat-label>
             <input matInput placeholder="1" formControlName="accId" required>
-        </mat-form-field>
+        </mat-form-field> -->
         
+        <mat-form-field appearance="outline">
+          <mat-label>Account</mat-label>
+          <mat-select formControlName="accountId">
+            <mat-option *ngFor="let acc of accounts" [value]="acc.value" >
+              {{ acc.valuecount }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <div>
             <button mat-raised-button color="primary" matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" matStepperNext style="float: right;">Next</button>
