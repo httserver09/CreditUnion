@@ -69,6 +69,31 @@ namespace union.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("getAccountsOfClient/{clientId}")]
+        public JsonResult getAccountsOfClient(int clientId)
+        {
+            try
+            {
+                //_logger.LogInformation("Retrieving accounts with client ID: " + Id.ToString());
+
+                IEnumerable<Account> accounts = _accRepository.getAccountsOfClient(clientId);
+
+                //_logger.LogInformation("Retrieving accounts with client ID: " + Id.ToString());
+
+                return new JsonResult(accounts);
+            }
+            catch(Exception ex)
+            {
+                // log error
+                //_logger.LogError("Error while retrieving business with ID: " + ex.Message.ToString());
+
+                // throw 
+                return new JsonResult("Error retrieving accounts of client ID " + clientId, ex.Message.ToString());
+
+            }
+        }
+
         [HttpPost]
         [Route("Post")]
         [Route("Post/{account}")]

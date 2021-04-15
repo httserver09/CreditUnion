@@ -2,6 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+
+
+interface Ben {
+  id: number;
+  fullname: string;
+  bankName : string
+  accountNumber : string
+  yourRef : string
+  beneficiaryReference: string
+  accountId: number
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +32,8 @@ export class BeneficiaryService {
     return this.http.get<any>(this.APIUrl + 'Beneficiary/GetBeneficiariesOfAnAccount/' + accountId);
   }
 
-  getBeneficiaryById(beneficiaryId: any): Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + 'Beneficiary/get' + beneficiaryId);
+  getBeneficiaryById(beneficiaryId: any): Observable<Ben> {
+    return this.http.get<Ben>(this.APIUrl + 'Beneficiary/get' + beneficiaryId);
   }
 
   addBeneficiary(val: any){

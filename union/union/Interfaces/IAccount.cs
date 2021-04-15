@@ -10,6 +10,7 @@ namespace union.Interfaces
     {
         IEnumerable<Account> GetAccounts();
         Account GetAccount(int id);
+        IEnumerable<Account> getAccountsOfClient(int clientId);
         string AddAccount(Account account);
         string UpdateAccount(Account accountChanges);
         string RemoveAccount(int id);

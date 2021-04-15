@@ -15,6 +15,16 @@ interface Account {
 }
 
 
+interface Ben {
+  Id: number;
+  fullname: string;
+  bankName : string
+  accountNumber : string
+  yourRef : string
+  beneficiaryReference: string
+  accountId: number
+}
+
 @Component({
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
@@ -24,9 +34,11 @@ export class TransferComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
 
-  // fullname: string = "";
   addBeneficiaryResponse: any = "";
+
+  accountToPay : Ben;
 
   control: FormControl;
 
@@ -41,15 +53,21 @@ export class TransferComponent implements OnInit {
     {  value: 2, valuecount: '2 (Cheque Account) ', viewValue: 'Checking account'}
   ];
 
+  fullname = new FormControl({ value: null, disabled: true });
+  bankName = new FormControl({ value: null, disabled: true });
+  accountNumber = new FormControl({ value: null, disabled: true });
+  yourRef = new FormControl({ value: null, disabled: true });
+  beneficiaryReference = new FormControl({ value: null, disabled: true });
+  accountId = new FormControl({value: '', disabled: true});
+
+
+  addedBeneficiary = new FormControl({value: '', disabled: true});
+  amount = new FormControl({value: '', disabled: false});
+              
   constructor(private _formBuilder: FormBuilder,
               private beneficiaryService: BeneficiaryService) { }
               
-              fullname = new FormControl({ value: null, disabled: true });
-              bankName = new FormControl({ value: null, disabled: true });
-              accountNumber = new FormControl({ value: null, disabled: true });
-              yourRef = new FormControl({ value: null, disabled: true });
-              beneficiaryReference = new FormControl({ value: null, disabled: true });
-              accountId = new FormControl({value: '', disabled: true}) 
+    
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group(
@@ -73,6 +91,13 @@ export class TransferComponent implements OnInit {
         accountId: new FormControl({value: '', disabled: true}, Validators.required) 
       }
     );
+
+    this.thirdFormGroup = this._formBuilder.group(
+      {
+        addedBeneficiary: new FormControl({value: '', disabled: true}, Validators.required),
+        amount: new FormControl({value: '', disabled: false}, Validators.required), 
+      }
+    );
   }
 
   onSubmit()
@@ -93,7 +118,25 @@ export class TransferComponent implements OnInit {
 
     this.beneficiaryService.addBeneficiary(this.secondFormGroup.value).subscribe(data => {
       this.addBeneficiaryResponse = data;
+      alert(this.addBeneficiaryResponse);
+
+      console.log(this.secondFormGroup.value);
+
+      console.log(this.secondFormGroup.value.fullname);
+
+      
     });
+
+    // get the beneficiary/account information
+    
+    // this.beneficiaryService.getBeneficiaryById().subscribe(data => {
+    //     this.accountToPay = data;
+    //     alert(data);
+    // });
+  }
+
+  onSubmitthird() {
+    console.log("I am on my third method");
   }
 
   getDisabledValue() {

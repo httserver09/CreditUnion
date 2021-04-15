@@ -6,3 +6,23 @@
     margin-top: 16px;
     width: 100%;
 }
+
+.example-card {
+    width: 100%;
+    text-align: center;
+    
+}
+
+.mat-icon {
+    /* height:48px !important;
+    width:48px !important; */
+    font-size:200px !important;
+}
+
+/* .exIcon{
+    text-align: center;
+} */
+
+/* .mat-icon, p {
+    text-align: center;
+} */

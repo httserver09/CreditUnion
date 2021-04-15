@@ -1,6 +1,8 @@
 
   <!-- <mat-horizontal-stepper linear #stepper> -->
-<mat-horizontal-stepper #stepper>
+<mat-horizontal-stepper linear #stepper>
+
+    <!-- Add banking details form -->
     <mat-step [stepControl]="firstFormGroup" label="Add Banking Details">
       <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
         <ng-template matStepLabel>Add Banking Details</ng-template>
@@ -64,6 +66,7 @@
       </form>
     </mat-step>
 
+    <!-- confirm banking details form -->
     <mat-step [stepControl]="secondFormGroup" label="Confirm Banking Details">
       <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmitSecond()">
         <ng-template matStepLabel>Confirm Banking Details</ng-template>
@@ -128,24 +131,55 @@
       </form>
     </mat-step>
 
-    <mat-step>
+    <!-- payment form -->
+    <mat-step [stepControl]="thirdFormGroup" label="Confirm Banking Details">
       <ng-template matStepLabel>Pay</ng-template>
-      <p>Pay</p>
-      <div>
+      
+      <form [formGroup]="thirdFormGroup" (ngSubmit)="onSubmitthird()">
+        <ng-template matStepLabel>Make Payment</ng-template>
+        
+      
+        <mat-form-field  appearance="outline">
+          <mat-label> {{ this.secondFormGroup.value.fullname }} </mat-label>
+          <input matInput 
+            [formControl]="addedBeneficiary" 
+            formControlName="addedBeneficiary"
+            >
+        </mat-form-field>
+
+        <br>
+     
+        <mat-form-field  appearance="outline">
+            <mat-label>Amount To Transfer ($)</mat-label>
+            <input matInput [formControl]="amount" placeholder="Enter amount" formControlName="amount">
+        </mat-form-field>
+
+        <br>
+
+        <div>
+            <button mat-raised-button color="primary" matStepperNext style="width: 100%;">Make Payment</button>
+        </div>
+      </form>
+    
+
+      <!-- <div>
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
         <button mat-raised-button color="primary" matStepperNext>Next</button>
-        <!-- <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button> -->
-      </div>
+      </div> -->
     </mat-step>
 
+    <!-- confirmation form -->
     <mat-step>
         <ng-template matStepLabel>Confirmation</ng-template>
-        <p>Confirmation</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        
+        <mat-card class="example-card">
+          <mat-icon class="exIcon">check_circle_outline</mat-icon> <br>
+    
+          <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink='/' style="width: 100%;">Done</button>
+          </mat-card-actions>
+        </mat-card>
+
       </mat-step>
   </mat-horizontal-stepper>
   

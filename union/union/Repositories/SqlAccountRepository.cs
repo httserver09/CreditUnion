@@ -37,6 +37,14 @@ namespace union.Repositories
             return _context.accounts;
         }
 
+        public IEnumerable<Account> getAccountsOfClient(int clientId)
+        {
+            //_logger.LogInformation("Attempting to retrieve list of accounts of client");
+
+            return _context.accounts.Where(x => x.clientId == clientId);
+        }
+
+
         public string RemoveAccount(int id)
         {
             //_logger.LogInformation("Deleting team detail of ID: " + softwareId);
