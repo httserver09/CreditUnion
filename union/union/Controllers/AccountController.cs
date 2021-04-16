@@ -83,7 +83,7 @@ namespace union.Controllers
 
                 return new JsonResult(accounts);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // log error
                 //_logger.LogError("Error while retrieving business with ID: " + ex.Message.ToString());
@@ -115,6 +115,42 @@ namespace union.Controllers
                 //_logger.LogError("Error while attempting to add new business. Error  Details: " + ex.Message.ToString());
 
                 return new JsonResult("Error occurred while adding new business", ex.Message.ToString());
+            }
+        }
+
+        [HttpPost]
+        [Route("makepaymentOnAccount/{amountAccount}")]
+        public JsonResult makepaymentOnAccount(string amountAccount)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(amountAccount))
+                {
+                    string[] amountAcc = amountAccount.Split(',');
+
+                    //extract acount to be debited
+                    Account accountToProcess = _accRepository.GetAccounts().Where(x => x.id == Convert.ToInt32(amountAcc[1])).FirstOrDefault();
+
+                    //transaction
+                    accountToProcess.baseAmount = accountToProcess.baseAmount - Convert.ToDouble(amountAcc[0]);
+
+                    //update record
+                    string msg = _accRepository.UpdateAccount(accountToProcess);
+
+                    return new JsonResult(msg);
+                }
+                else
+                {
+                    return new JsonResult("Information supplied is insufficient");
+                }
+            }
+            catch(Exception ex)
+            {
+                //log 
+                //_logger.LogError("Error while attempting to add new business. Error  Details: " + ex.Message.ToString());
+
+                return new JsonResult("Error occurred while attempting to make payment", ex.Message.ToString());
+
             }
         }
 

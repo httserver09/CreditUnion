@@ -107,7 +107,7 @@ namespace union.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     amount = table.Column<double>(type: "float", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    deducted = table.Column<double>(type: "float", nullable: false),
                     transactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     transactionStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     accountId = table.Column<int>(type: "int", nullable: false)
@@ -248,8 +248,8 @@ namespace union.Migrations
 
             migrationBuilder.InsertData(
                 table: "transactions",
-                columns: new[] { "id", "accountId", "amount", "description", "transactionDate", "transactionStatus" },
-                values: new object[] { 1, 1, 7600.8900000000003, "Annual House Maintenance", new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Successfully" });
+                columns: new[] { "id", "accountId", "amount", "deducted", "transactionDate", "transactionStatus" },
+                values: new object[] { 1, 1, 7600.8900000000003, 2600.4400000000001, new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Successfully" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

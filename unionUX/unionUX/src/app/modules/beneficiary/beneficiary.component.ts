@@ -21,8 +21,8 @@ export class BeneficiaryComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = [
-    'Id', 
+  displayedColumns: any[] = [
+    'Id',
     'fullname', 
     'bankName', 
     'accountNumber', 

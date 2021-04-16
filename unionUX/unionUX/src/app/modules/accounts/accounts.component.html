@@ -10,19 +10,17 @@
             <div class="col-sm-4">
                 <!-- accountType -->
                 <h2 class="card-title"> {{ acc.accountType }}</h2> 
-                <p class="card-text">{{acc.clientId}}</p>
+                <p class="card-text"> Client - {{ acc.clientId }}</p>
             </div>
             <div class="vl"></div>
             <div class="col-sm-2">
                 Available Balance <br>
-                {{ getRelatedClient(acc.baseAmount) }}
+                {{ acc.baseAmount | currency :'USD' : number : '1.2-2' }}
             </div>
             <div class="col-sm-4 accActions">
                 <button type="button" class="btn btn-outline-primary" routerLink='/transfer'>Transfer</button>
-                <button type="button" class="btn btn-outline-primary" routerLink='/beneficiaries'>Beneficiaries</button>
+                <button type="button" class="btn btn-outline-primary" routerLink='/beneficiaries'>View Beneficiaries</button>
             </div>
-           
-            
         </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ using union.Models;
 namespace union.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210413233008_InitialMigration")]
+    [Migration("20210415220527_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -376,8 +376,8 @@ namespace union.Migrations
                     b.Property<double>("amount")
                         .HasColumnType("float");
 
-                    b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("deducted")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("transactionDate")
                         .HasColumnType("datetime2");
@@ -395,7 +395,7 @@ namespace union.Migrations
                             id = 1,
                             accountId = 1,
                             amount = 7600.8900000000003,
-                            description = "Annual House Maintenance",
+                            deducted = 2600.4400000000001,
                             transactionDate = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             transactionStatus = "Successfully"
                         });

@@ -1,23 +1,24 @@
 <mat-nav-list>
     <div class="profile-card">
+        
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="FADIL">
         <div class="header">
             <h2>John Doe</h2>
             <h4>Johndoe@email.com</h4>
         </div>
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="FADIL">
     </div>
 
     <mat-divider></mat-divider>
     
     <h2 matsubheader> My Financials </h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/msgs">
+    <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/msgs">
         <mat-icon> account_balance </mat-icon>
         <span matBadgeSize="small">Dashboard</span>  
-    </a>
+    </a> -->
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/accounts">
-        <mat-icon> credit_card</mat-icon>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">
+        <mat-icon> account_balance</mat-icon>
         <span matBadgeSize="small">Accounts</span>  
     </a>
 
@@ -64,7 +65,7 @@
 
    
 
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider>
 
     <h2 matsubheader> Pages </h2>
     
@@ -85,5 +86,5 @@
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
         <mat-icon>contact_phone</mat-icon>
         Leads
-    </a>
+    </a> -->
 </mat-nav-list>

@@ -76,7 +76,7 @@ namespace union.Models
                     id = 1,
                     accountId = 1,
                     amount = 7600.89,
-                    description = "Annual House Maintenance",
+                    deducted = 2600.44,
                     transactionDate = new DateTime(2021, 01, 12),
                     transactionStatus = "Successfully"
                 });

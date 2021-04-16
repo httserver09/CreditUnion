@@ -15,7 +15,6 @@ const routes: Routes = [{
   path: '',
   component: DefaultComponent,
     children: [
-    { path: '', component: DashboardComponent },
     { path: 'posts', component: PostsComponent},
     { path: 'transfer', component: TransferComponent},
     { path: 'history', component: TransferHistComponent},
@@ -23,7 +22,7 @@ const routes: Routes = [{
     { path: 'msgs', component: MessagesComponent},
     { path: 'tickets', component: TicketsComponent},
     { path: 'beneficiaries', component: BeneficiaryComponent},
-    { path: 'accounts', component: AccountsComponent}
+    { path: '', component: AccountsComponent}
   ]
 }];
 

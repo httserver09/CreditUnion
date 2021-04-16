@@ -15,7 +15,7 @@ export class AccountService {
   }
 
   getAccountById(accountId: any): Observable<any> {
-    return this.http.get<any>(this.APIUrl + 'Account/get' + accountId);
+    return this.http.get<any>(this.APIUrl + 'Account/get/' + accountId);
   }
 
   getAccountsOfClient(clientId: number): Observable<any>{
@@ -32,5 +32,9 @@ export class AccountService {
 
   deleteAccount(id: any){
     return this.http.delete(this.APIUrl + 'Account/delete/' + id);
+  }
+
+  makepaymentOnAccount(amountAccount: any){
+    return this.http.post(this.APIUrl + 'Account/makepaymentOnAccount/' + amountAccount, null);
   }
 }

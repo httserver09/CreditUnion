@@ -11,7 +11,7 @@ namespace union.Models
         [Key]
         public int id { get; set; }
         public double amount { get; set; }    
-        public string description { get; set; }
+        public double deducted { get; set; }
         public DateTime transactionDate { get; set; }
         public string transactionStatus { get; set; }
         public int accountId { get; set; }

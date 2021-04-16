@@ -45,8 +45,7 @@ export class AccountsComponent implements OnInit {
 
       console.log('My account: ' + this.myAccount[0].accountType);
 
-      // console.log(JSON.stringify(this.myAccount));
-
+      console.log('My account Id: ' + this.myAccount[1].id);
     });
   }
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using union.Interfaces;
+using union.Models;
 
 namespace union.Controllers
 {
@@ -15,11 +16,14 @@ namespace union.Controllers
     {
         private readonly ITransaction _transaction;
         private readonly ILogger<TransactionController> _logger;
+        private readonly IAccount _account;
 
         public TransactionController(ITransaction transaction,
+                            IAccount account,
                             ILogger<TransactionController> logger)
         {
             _transaction = transaction;
+            _account = account;
             _logger = logger;
         }
 
@@ -45,14 +49,14 @@ namespace union.Controllers
             }
         }
 
-        [Route("Get/{id}")]
-        public JsonResult Get(int id)
+        [Route("Get/{transactionId}")]
+        public JsonResult Get(int transactionId)
         {
             try
             {
                 //_logger.LogInformation("Retrieving business with ID: " + Id.ToString());
 
-                Models.Transaction transaction = _transaction.GetTransaction(id);
+                Models.Transaction transaction = _transaction.GetTransaction(transactionId);
 
                 //_logger.LogInformation("Retrieving business with ID: " + Id.ToString());
 
@@ -64,17 +68,24 @@ namespace union.Controllers
                 //_logger.LogError("Error while retrieving business with ID: " + ex.Message.ToString());
 
                 // throw 
-                return new JsonResult("Error retrieving transaction with ID " + id, ex.Message.ToString());
+                return new JsonResult("Error retrieving transaction with ID " + transactionId, ex.Message.ToString());
             }
         }
 
         [HttpPost]
         [Route("Post")]
-        [Route("Post/{account}")]
+        [Route("Post/{transaction}")]
         public JsonResult Post([FromBody] Models.Transaction transaction)
         {
             try
             {
+                if(transaction != null)
+                {
+                    Account retrievedAccount = _account.GetAccount(transaction.accountId);
+
+                    transaction.amount = retrievedAccount.baseAmount;
+                }
+
                 //_logger.LogInformation("Adding new business to the system");
 
                 string msg = _transaction.AddTransaction(transaction);
@@ -116,14 +127,14 @@ namespace union.Controllers
 
 
         [HttpDelete]
-        [Route("Delete/{accountid}")]
-        public JsonResult Delete(int accountid)
+        [Route("Delete/{transactionId}")]
+        public JsonResult Delete(int transactionId)
         {
             try
             {
                 //_logger.LogInformation("Deleting business with ID: " + Id);
 
-                string response = _transaction.RemoveTransaction(accountid);
+                string response = _transaction.RemoveTransaction(transactionId);
 
                 //_logger.LogInformation("Deleted Successfully !");
 
