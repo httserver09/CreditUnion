@@ -72,6 +72,29 @@ namespace union.Controllers
             }
         }
 
+        [Route("getTransactionsOnAnAccount/{accountId}")]
+        public JsonResult getTransactionsOnAnAccount(int accountId)
+        {
+            try
+            {
+                //_logger.LogInformation("Retrieving business with ID: " + Id.ToString());
+
+                IEnumerable<Models.Transaction> transaction = _transaction.GetTransactionsOnAnaccount(accountId);
+
+                //_logger.LogInformation("Retrieving business with ID: " + Id.ToString());
+
+                return new JsonResult(transaction);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                //_logger.LogError("Error while retrieving business with ID: " + ex.Message.ToString());
+
+                // throw 
+                return new JsonResult("Error retrieving transaction on account ID: " + accountId, ex.Message.ToString());
+            }
+        }
+
         [HttpPost]
         [Route("Post")]
         [Route("Post/{transaction}")]

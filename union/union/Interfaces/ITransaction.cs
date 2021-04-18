@@ -10,6 +10,8 @@ namespace union.Interfaces
     {
         IEnumerable<Models.Transaction> GetTransactions();
         Models.Transaction GetTransaction(int id);
+
+        IEnumerable<Models.Transaction>  GetTransactionsOnAnaccount(int accountId);
         string AddTransaction(Models.Transaction transaction);
         string UpdateTransaction(Models.Transaction transactionChanges);
         string RemoveTransaction(int id);

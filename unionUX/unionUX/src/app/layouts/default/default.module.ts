@@ -24,13 +24,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { BeneficiaryService } from 'src/app/shared/services/beneficiary.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 // import { MatCardModule } from '@angular/material/card';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { RegisterComponent } from 'src/app/modules/register/register.component';
+import { LoginComponent } from 'src/app/modules/login/login.component';
+import { AccountsComponent } from 'src/app/modules/accounts/accounts.component';
+// import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,10 @@ import { MatCardModule } from '@angular/material/card';
     TicketsComponent,
     TransferComponent,
     TransferHistComponent,
-    TransferSummComponent
+    TransferSummComponent, 
+    RegisterComponent,
+    LoginComponent,
+    AccountsComponent
   ],
   imports: [
     CommonModule,

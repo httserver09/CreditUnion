@@ -27,6 +27,10 @@ export class TransactionService {
     return this.http.get<Transaction>(this.APIUrl + 'Transaction/get' + transactionId);
   }
 
+  getTransactionsOnAnAccount(accountId: number): Observable<Transaction> {
+    return this.http.get<Transaction>(this.APIUrl + 'Transaction/getTransactionsOnAnAccount/' + accountId);
+  }
+
   addTransaction(val: any){
     return this.http.post(this.APIUrl + 'Transaction/Post', val);
   }

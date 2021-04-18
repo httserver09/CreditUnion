@@ -37,6 +37,12 @@ namespace union.Repositories
             return _context.transactions;
         }
 
+        public IEnumerable<Models.Transaction> GetTransactionsOnAnaccount(int accountId)
+        {
+            //_logger.LogInformation("Attempting to retrieve list of businesses");
+            return _context.transactions.Where(x => x.accountId == accountId);
+        }
+
         public string RemoveTransaction(int id)
         {
             //_logger.LogInformation("Deleting team detail of ID: " + softwareId);
