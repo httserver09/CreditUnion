@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using union.Interfaces;
 using union.Models;
@@ -45,7 +48,7 @@ namespace union
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()
             );
 
-
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddScoped<IAccount, SqlAccountRepository>();
             services.AddScoped<IClient, SqlClientRepository>();
             services.AddScoped<IBeneficiary, SqlBeneficiaryRepository>();
@@ -62,6 +65,24 @@ namespace union
                 opt.User.RequireUniqueEmail = true;
                 //opt.SignIn.RequireConfirmedEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+            services.AddAuthentication(cfg =>
+            {
+                cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Token:Key"])),
+                    ValidIssuer = Configuration["Token:Issuer"],
+                    ValidateIssuer = true,
+                    ValidateAudience = false
+                };
+            });
 
             services.AddControllersWithViews();
         }

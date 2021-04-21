@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(f: NgForm){
-    // this.alertService.info('Posting registration form');
+    this.alertService.info('Posting registration form');
     
     this.progressBar.startLoading();
     
@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit {
         this.progressBar.setError();
         console.log(err);
         this.alertService.danger(err.error.Errors[0].Description);
-        // this.alertService.danger(err.error.errors[0].Description);
         this.progressBar.completeLoading();
       }
     }
@@ -55,7 +54,7 @@ export class RegisterComponent implements OnInit {
    
 
     //call service
-    this.authService.register(this.model).subscribe();
+    this.authService.register(this.model).subscribe(registerObserver);
   }
 
 }

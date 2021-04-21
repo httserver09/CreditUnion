@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgProgressRef } from 'ngx-progressbar';
+import { NgProgressRef } from '@ngx-progressbar/core'
 
 @Injectable({
   providedIn: 'root'

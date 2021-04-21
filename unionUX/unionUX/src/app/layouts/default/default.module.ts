@@ -36,7 +36,17 @@ import { MatCardModule } from '@angular/material/card';
 import { RegisterComponent } from 'src/app/modules/register/register.component';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { AccountsComponent } from 'src/app/modules/accounts/accounts.component';
-// import { FormsModule} from '@angular/forms';
+
+import { ProgressbarService } from 'src/app/shared/services/progressbar.service';
+
+
+import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AlertModule} from 'ngx-alerts';
+
+
+import { NgProgressModule } from '@ngx-progressbar/core'
+
 
 @NgModule({
   declarations: [
@@ -69,14 +79,19 @@ import { AccountsComponent } from 'src/app/modules/accounts/accounts.component';
     HttpClientModule,
     MatTableModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    BrowserAnimationsModule,
+    NgProgressModule,
+    BrowserModule,
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, positionX: 'right'})
   ],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: { displayDefaultIndicatorType: false }
     },
-    BeneficiaryService
+    BeneficiaryService,
+    ProgressbarService
   ]
 })
 export class DefaultModule { }

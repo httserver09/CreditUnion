@@ -12,6 +12,7 @@ import { TicketsComponent } from './modules/tickets/tickets.component';
 import { TransferHistComponent } from './modules/transfer-hist/transfer-hist.component';
 import { TransferSummComponent } from './modules/transfer-summ/transfer-summ.component';
 import { TransferComponent } from './modules/transfer/transfer.component';
+import { LoginComponent } from './modules/login/login.component';
 
 const routes: Routes = [{
   path: '',
@@ -25,12 +26,13 @@ const routes: Routes = [{
     { path: 'tickets', component: TicketsComponent},
     { path: 'beneficiaries', component: BeneficiaryComponent},
     { path: 'accounts', component: AccountsComponent},
-    { path: '', component: RegisterComponent}
+    { path: 'register', component: RegisterComponent},
+    { path: '', component: LoginComponent }
   ]
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
