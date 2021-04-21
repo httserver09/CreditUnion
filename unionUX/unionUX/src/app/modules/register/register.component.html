@@ -46,6 +46,7 @@
             <input type="password" 
             class="form-control" 
             name="ConfirmPassword"
+            
             ngModel 
             required
             #ConfirmPassword="ngModel"
@@ -53,11 +54,12 @@
             <label for="ConfirmPassword">Confirm Password</label>
         </div>
 
-        <div class="inputBox">
+        <div class="inputBox" hidden>
            
             <input type="text" 
             class="form-control" 
             name="role"
+            [(ngModel)]="model.role"
             ngModel 
             required
             #ConfirmPassword="ngModel"
@@ -67,11 +69,12 @@
             <label for="role">Role </label>
         </div>
 
-        <div class="inputBox">
+        <div class="inputBox" hidden>
            
             <input type="text" 
             class="form-control" 
             name="title"
+            [(ngModel)]="model.title"
             ngModel 
             required
             #ConfirmPassword="ngModel"

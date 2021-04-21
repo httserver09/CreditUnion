@@ -84,6 +84,28 @@ namespace union
                 };
             });
 
+
+            services.AddAuthorization(options =>
+            {
+                //any user which is a ManagerDevelopers must have: 
+                // > a claim Title = Customer
+                // > a role: manager
+                options.AddPolicy("CustomerRole", md =>
+                {
+                    md.RequireClaim("claimtitle", "Customer");
+                    md.RequireRole("Customer");
+                });
+
+                //any user which is a AdminDevelopers must have: 
+                // > a claim Title = Admin
+                // > a role: Administrator
+                options.AddPolicy("AdminRole", ad =>
+                {
+                    ad.RequireClaim("claimtitle", "Admin");
+                    ad.RequireRole("Administrator");
+                });
+            });
+
             services.AddControllersWithViews();
         }
 

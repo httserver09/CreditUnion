@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,6 +12,7 @@ using union.Models;
 namespace union.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = "Administrator,Customer")]
     [ApiController]
     public class TransactionController : ControllerBase
     {

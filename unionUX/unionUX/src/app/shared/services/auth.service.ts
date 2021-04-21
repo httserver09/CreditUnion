@@ -74,7 +74,7 @@ export class AuthService {
   }
 
   getValues(): Observable<string[]>{
-    return this.http.get<string[]>(this.APIUrl + 'values', this.getHttpOptions());
+    return this.http.get<string[]>(this.APIUrl + 'Values', this.getHttpOptions());
   }
 
   getHttpOptions(){
@@ -85,7 +85,5 @@ export class AuthService {
     };
 
     return httpOptions;
-  }
-
- 
+  } 
 }

@@ -15,8 +15,8 @@ export class RegisterComponent implements OnInit {
     Username: null,
     Email: null,
     Password: null,
-    role: null,
-    title: null
+    role: 'Customer',
+    title: 'Customer'
   };
 
 

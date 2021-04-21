@@ -63,10 +63,11 @@ namespace union.Repositories
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
+#warning reduceExpiryToMinutes
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.Now.AddDays(7), 
                 SigningCredentials = creds,
                 Issuer = _config["Token:Issuer"]
             };
